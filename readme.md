@@ -10,7 +10,9 @@ Instructions to Install:
 6. Run `php artisan db:seed`
 -------------------------------------
 1. `clone`
+  
   1.1 create `database`
+  
   1.2 update `env` file
 2. `composer install`
 3. `php artisan migrate`
