@@ -17,22 +17,22 @@
 			<div class="col-md-3">
 				<b>{{{$p->percentage}}}%</b>
 				<br>
-				funded
+				Funded
 			</div>
 			<div class="col-md-3">
-				<b>{{{number_format($p->totalgoal)}}} ₮</b>
+				<b>{{{number_format($p->totalgoal)}}} $</b>
 				<br>
-				goal
+				Goal
 			</div>
 			<div class="col-md-3">
-				<b>{{{number_format($p->totalpayment)}}} ₮</b>
+				<b>{{{number_format($p->totalpayment)}}} $</b>
 				<br>
-                collected
+                Collected
 			</div>
 			<div class="col-md-3">
 				<b>{{{$p->daysleft}}}</b>
 				<br>
-				days to go
+				Days to go
 			</div>
 		</div>
 	</div>

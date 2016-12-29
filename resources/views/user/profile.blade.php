@@ -35,7 +35,7 @@
 							<ul>
 								@foreach($user->totalpayments as $p)
 									<li>
-										<a title="{{{$p['title']}}}" href="{{{$p['url']}}}">{{{$p['title']}}}</a> - {{{number_format($p['value'])}}} ₮
+										<a title="{{{$p['title']}}}" href="{{{$p['url']}}}">{{{$p['title']}}}</a> - {{{number_format($p['value'])}}} {{trans('messages.currencysymbol')}}
 									</li>
 								@endforeach
 							</ul>

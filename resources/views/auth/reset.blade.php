@@ -18,6 +18,6 @@
 	@include('modules.form.formgroup',['type'=>'email','label'=>'E-Mail','id'=>'email',$required='required'])
 	@include('modules.form.formgroup',['type'=>'password','label'=>'New Password','id'=>'password',$required='required'])
 	@include('modules.form.formgroup',['type'=>'password','label'=>'Confirm New Password','id'=>'password_confirmation',$required='required'])
-	{!! Form::submit('Нууц үгээ солих',['class'=>'btn btn-default']) !!}
+	{!! Form::submit('Save',['class'=>'btn btn-default']) !!}
 {!! Form::close() !!}
 @endsection

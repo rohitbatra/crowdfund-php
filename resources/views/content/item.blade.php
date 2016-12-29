@@ -4,7 +4,7 @@
 	@if($content->showinfo == 1)
 		{{trans('blog.author')}} {{{$content->author->firstname}}} {{{$content->author->lastname}}} | {{trans('messages.date')}} {{{$content->updated_at->format('Y/m/d')}}}
 		<div>
-		Түгээх
+		Shares
 		@foreach($content->shares as $s)
 			<a href="{{{$s['href']}}}" data-action="share" data-href="{{{$s['href']}}}" class="btn btn-default btn-share btn-{{{$s['class']}}}">{{{$s['class']}}}</a>
 		@endforeach

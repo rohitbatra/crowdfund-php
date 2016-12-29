@@ -11,7 +11,7 @@
 				@if(isset($contact) && $contact == true)
 				{!! Form::open(array('url'=>'/','method'=>'post','class'=>'preventSubmit')) !!}
 					<div>
-						<a href="#" class="btn btn-default" data-action="contactUserModal" data-userid="{{{$u->id}}}">Related</a>
+						<a href="#" class="btn btn-default" data-action="contactUserModal" data-userid="{{{$u->id}}}">Contact User</a>
 					</div>
 				{!! Form::close() !!}
 				@endif

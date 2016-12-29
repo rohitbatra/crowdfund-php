@@ -5,7 +5,7 @@
 		<footer>
 			<div class="row">
 				<div class="col-md-3">
-					<h3>POLONIAGO</h3>
+					<img src="{{ asset('images/logo/logo_200x65.png') }}" />
 				</div>
 				<div class="col-md-3">
 					<h4>About Us</h4>
@@ -52,8 +52,8 @@
 			</div>
 			<hr>
 			<div class="row">
-				<div class="col-md-6">
-				All Rights Reserved! &copy; 2015 - {{{date('Y')}}}
+				<div class="col-md-12 text-center">
+				All Rights Reserved  &copy; 2015 - {{{date('Y')}}}
 				@yield('footer')
 				</div>
 				<div class="col-md-6 text-right">

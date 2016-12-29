@@ -13,18 +13,13 @@
 			</div>
 		@endif
 		<div class="container">
-			@section('header')
-				@include('layouts.parts.header')
-			@show
-		</div>
-		<div class="container">
 			<div class="row">
-			<div class="col-md-8">
-				@yield('content')
-			</div>
-			<aside class="col-md-4">
-				@yield('aside')
-			</aside>
+				<div class="col-md-8">
+					@yield('content')
+				</div>
+				<aside class="col-md-4">
+					@yield('aside')
+				</aside>
 			</div>
 		</div>
 		@include('layouts.parts.footer')

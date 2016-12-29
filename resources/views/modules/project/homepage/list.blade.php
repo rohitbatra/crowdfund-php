@@ -5,7 +5,10 @@
 		@if ($k+1 < $count)
 			<hr class="tiny">
 		@else
-			<a title="View all projects" href="{{{url('projects')}}}" class="btn btn-default btn-lrg">View all projects</a>
+			<br/>
+			<div class="row">
+				<button title="View All Projects" onclick="location.href = '{{{url('projects')}}}'" class="btn btn-default center-block">View All Projects</button>
+			</div>
 		@endif
 		
 	@endforeach

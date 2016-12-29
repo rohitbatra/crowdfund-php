@@ -7,6 +7,8 @@
 		</label>
 	</div>
 	{!! Form::submit('Login',['class'=>'btn btn-default','data-action'=>'login']) !!}
-	<br>OR<br>
+
+	<hr class="tiny">
+
 	@include('modules.user.social')
 {!! Form::close() !!}

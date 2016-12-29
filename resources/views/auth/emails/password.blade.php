@@ -7,6 +7,6 @@ You've requested to reset your Password. Please use the link below.
 <a target="_blank" href="{{ url('password/reset/'.$token) }}">Click Here</a> to Reset your Passwod.
 </p>
 <p>
-This is an automated response, please do not respond to this email. If you're facing any issues, please write to us at support@poloniago.com
+This is an automated response, please do not respond to this email. If you're facing any issues, please write to us at <a href="mailto:support@poloniago.com">support@poloniago.com</a>
 </p>
 @stop

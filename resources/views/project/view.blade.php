@@ -54,9 +54,9 @@
 							</div>
 						</div>
 						<div>
-							<b>{{{number_format($project->totalpayment)}}} ₮</b>
+							<b>{{{number_format($project->totalpayment)}}} {{trans('messages.currencysymbol')}}</b>
 							<br>
-							Total Goal: {{{number_format($project->totalgoal)}}} ₮
+							Total Goal: {{{number_format($project->totalgoal)}}} {{trans('messages.currencysymbol')}}
 						</div>
 						<div>
 							<b>{{{$project->daysleft}}}</b>
@@ -122,7 +122,7 @@
 				@if($project->image)
 				<img src="{{{asset('images/project/large/'.$project->image)}}}"/>
 				@endif
-				<h3>Зардлын задаргаа</h3>
+				<h3>Breakdown</h3>
 					<table class="table">
 						<thead>
 							<th>
@@ -148,7 +148,7 @@
 									{{{$g->title}}}
 									</td>
 									<td>
-									{{{number_format($g->goal)}}} ₮
+									{{{number_format($g->goal)}}} {{trans('messages.currencysymbol')}}
 									</td>
 									<td>
 									{{{$g->start}}} - {{{$g->end}}}
@@ -185,7 +185,7 @@
 						@if($r->image)
 							<img src="{{{asset('images/reward/medium/'.$r->image)}}}" alt="{{{$r->title}}}" />
 						@endif
-						<b>Reward Value: {{{number_format($r->value)}}} ₮</b>
+						<b>Reward Value: {{{number_format($r->value)}}} {{trans('messages.currencysymbol')}}</b>
 						<br>
 						@if($r->amountleft > 0)
 							<b>Left / Total: {{{$r->amountleft}}}/{{{$r->amount}}}</b>
@@ -197,7 +197,7 @@
 						{{{$r->description}}}
 						@if($r->amountleft > 0)
 							{!! Form::open(array('url'=>'/','method'=>'post','class'=>'preventSubmit')) !!}
-								{!! Form::submit('For',['class'=>'btn btn-default','data-action'=>'claimReward','data-rewardid'=>$r->id]) !!}
+								{!! Form::submit('Claim Reward',['class'=>'btn btn-default','data-action'=>'claimReward','data-rewardid'=>$r->id]) !!}
 							{!! Form::close()!!}
 						@endif
 					</div>

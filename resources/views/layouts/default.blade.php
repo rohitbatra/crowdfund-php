@@ -12,12 +12,14 @@
 			<div class="navpadding">
 			</div>
 		@endif
-		<div class="container">
-			@section('header')
-				@include('layouts.parts.header')
-			@show
+		<div class="container-fluid">
+			<div class="container">
+				@section('header')
+					@include('layouts.parts.header')
+				@show
+			</div>
 		</div>
-		<div class="container">
+		<div class="container-fluid">
 			@yield('content')
 		</div>
 		@include('layouts.parts.footer')

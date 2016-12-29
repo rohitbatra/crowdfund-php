@@ -3,12 +3,12 @@
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
 	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-		<span class="sr-only">Нээх/Хаах</span>
+		<span class="sr-only">Open / Close</span>
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	  </button>
-	  <a class="navbar-brand" href="{{{url('/')}}}">POLONIAGO</a>
+	  <a class="navbar-brand" href="{{{url('/')}}}"><img src="{{{asset('images/logo/logo_200x65.png')}}}" alt="logo" width="105px" height="35px" style="margin-top: -6px" /> </a>
 	</div>
 
 	<!-- Collect the nav links, forms, and other content for toggling -->

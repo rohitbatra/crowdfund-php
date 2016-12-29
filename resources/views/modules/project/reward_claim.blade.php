@@ -1,6 +1,6 @@
 @if(!$user)
 	@include('modules.user.login')
-        Please sign in or before claiming rewards <a href="{{{url('user/register')}}}" target="_blank">Click here</a> to register.
+        Please sign in before claiming rewards <a href="{{{url('user/register')}}}" target="_blank">Click here</a> to register.
 	<hr>
 	<h4>Lorem Ipsum.</h4>
 	{!! Form::open(array('url'=>'user/store','method'=>'post','class'=>'')) !!}
@@ -13,11 +13,11 @@
 					{!! Form::hidden('project_id',$reward->project->id)!!}
 			</li>
 			<li>
-				Your Reward: <b>{{{$reward->title}}} x 1 (ширхэг)</b>
+				Your Reward: <b>{{{$reward->title}}} x 1 (Shares)</b>
 					{!! Form::hidden('id',$reward->id)!!}
 			</li>
 			<li>
-				<p class="bg-success">Reward Value: <b>{{{number_format($reward->value)}}} ₮</b></p>
+				<p class="bg-success">Reward Value: <b>{{{number_format($reward->value)}}} {{trans('messages.currencysymbol')}}</b></p>
 					{!! Form::hidden('value',$reward->value)!!}
 			</li>
 		</ul>
@@ -31,11 +31,11 @@
 					{!! Form::hidden('project_id',$reward->project->id)!!}
 			</li>
 			<li>
-				Reward: <b>{{{$reward->title}}} x 1 (ширхэг)</b>
+				Reward: <b>{{{$reward->title}}} x 1 (Shares)</b>
 					{!! Form::hidden('id',$reward->id)!!}
 			</li>
 			<li>
-				<p class="bg-success">Reward Value: <b>{{{number_format($reward->value)}}} ₮</b></p>
+				<p class="bg-success">Reward Value: <b>{{{number_format($reward->value)}}} {{trans('messages.currencysymbol')}}</b></p>
 					{!! Form::hidden('value',$reward->value)!!}
 			</li>
 		</ul>

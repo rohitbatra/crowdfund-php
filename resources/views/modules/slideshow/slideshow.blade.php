@@ -2,7 +2,7 @@
   <!-- Indicators -->
   <ol class="carousel-indicators">
 	@foreach($slideshow as $k=>$s)
-	<li data-target="#carousel-{{{$id}}}" data-slide-to="{{{$k}}}" class="active"></li>
+		<li data-target="#carousel-{{{$id}}}" data-slide-to="{{{$k}}}" class="active"></li>
 	@endforeach
   </ol>
 

@@ -31,7 +31,7 @@ if (isset($required) && ($required==true || $required == 'required')){
 		@elseif ($type=='currency')
 		<div class="input-group">
 			{!! Form::number($id,$old,['class'=>'form-control '.$required,'placeholder'=>$label,'min'=>'0','step'=>'0.01',]) !!}
-			<span class="input-group-addon">₮</span>
+			<span class="input-group-addon">{{trans('messages.currencysymbol')}}</span>
 		</div>
 		@elseif ($type=='checkbox')
 		<div class="checkbox">
