@@ -5912,3 +5912,20 @@ ul.project-category-list li a {
 .projects {
   /*border: 2px dashed #efefef; */
 }
+
+.social_icons_homepage {
+  width: auto;
+  height: 29px;
+  margin: 2px;
+}
+
+.footer_logo {
+  width: auto;
+  height: auto;
+  margin-top: -18px;
+  margin-bottom:-10px;
+}
+
+.ul-noBullets {
+  list-style: inside none none;
+}
