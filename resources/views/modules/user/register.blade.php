@@ -7,11 +7,13 @@
 	<div class="form-group">
 		<div class="g-recaptcha" id="g-recaptcha" data-sitekey="{{$recaptchakey}}"></div>
 	</div>
-	@include('modules.form.formgroup',['type'=>'checkbox','showlabel'=>false,'label'=>'Subscribe to Newsletter','id'=>'subscribe_me'])
+	<!-- @include('modules.form.formgroup',['type'=>'checkbox','showlabel'=>false,'label'=>'Subscribe to Newsletter','id'=>'subscribe_me']) -->
 	@include('modules.form.formgroup',['type'=>'checkbox','showlabel'=>false,'label'=>'I Accept <a href="'.url('tos').'" target="_blank">Terms of Service</a>.','id'=>'tos'])
   {!! Form::submit('Register',['class'=>'btn btn-default','data-action'=>'register']) !!}
 
-	<hr class="tiny">
+<!--
+<hr class="tiny">
 
 @include('modules.user.social')
+-->
 {!! Form::close() !!}
