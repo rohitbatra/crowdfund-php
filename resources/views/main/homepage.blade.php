@@ -188,16 +188,16 @@
 			<br/>
 			<div class="row">
 				<div class="col-md-3">
-					<a href="javascript:void(1);" > <img src="http://www.newpolandexpress.pl/images/logo_npe_med_2011.jpg" width="190px" height="60px" /> </a>
+					<a href="javascript:void(1);" > <img src="{{{asset('images/press/logo_npe.jpeg')}}}" width="190px" height="60px" /> </a>
 				</div>
 				<div class="col-md-3">
-					<a href="javascript:void(1);" ><img src="http://www.warsawvoice.pl/WVpage/images/logoMain.gif" width="190px" height="60px" /></a>
+					<a href="javascript:void(1);" ><img src="{{{asset('images/press/logoMain.gif')}}}" width="190px" height="60px" /></a>
 				</div>
 				<div class="col-md-3">
-					<a href="javascript:void(1);" ><img src="http://www.thenews.pl/style/_img/logoPRprint.gif" width="190px" height="60px" /></a>
+					<a href="javascript:void(1);" ><img src="{{{asset('images/press/logoPRprint.gif')}}}" width="190px" height="60px" /></a>
 				</div>
 				<div class="col-md-3">
-					<a href="javascript:void(1);" ><img src="http://www.krakowpost.com/wp-content/uploads/2015/07/KP-Logo-brightened-small-for-site-header-image.png" width="190px" height="60px" /></a>
+					<a href="javascript:void(1);" ><img src="{{{asset('images/press/kp_logo.png')}}}" width="190px" height="60px" /></a>
 				</div>
 			</div>
 		</section>
