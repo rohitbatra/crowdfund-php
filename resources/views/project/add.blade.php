@@ -1,26 +1,18 @@
 ﻿@extends('layouts.default')
 @section('header')
 	@parent
-	<p>Lorem Ipsum.</p>
-	<p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-		<ul>
-			<li>Lorem Ipsum</li>
-		</ul>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-		<div class="row">
+		<div class="row well">
+			<div class="text-center">Kindly go through the below information/links once. If you have any issues/doubts regarding anything please feel free to contact us at <a href="mailto:support@poloniago.com">support@poloniago.com</a></div>
+			<hr class="tiny" />
 			@foreach($content_data as $cd)
 				<div class="col-md-3">
-					<div class="well">
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#{{{$cd['id']}}}">
-							{{{$cd['title']}}}
-						</button>
-						@include('modules.modal',['id'=>$cd['id'],'modalbody'=>'content.modalitem','title'=>$cd['title'],'vars'=>['content'=>$cd['content']]])
-					</div>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#{{{$cd['id']}}}">
+						{{{$cd['title']}}}
+					</button>
+					@include('modules.modal',['id'=>$cd['id'],'modalbody'=>'content.modalitem','title'=>$cd['title'],'vars'=>['content'=>$cd['content']]])
 				</div>
 			@endforeach
 		</div>
-	</p>
 @endsection
 
 @section('content')
@@ -30,7 +22,7 @@
 			<div class="step-register">
 				<h3>Register</h3>
 				<p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Please register or login to your account first to create a new project.
 				</p>
 				@include('modules.user.register')
 			</div>

@@ -191,7 +191,7 @@ jQuery(document).ready(function($j){
 						tl = $('.projectteammemberscontainer').data('teamleader');
 						if(userid != tl && $.inArray(""+userid+"",tmarr) < 0){
 							$('.projectteammemberslist>ul').append(li);
-							btn.html('<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Хасах');
+							btn.html('<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove');
 							btn.data('action','removeTeamMember');
 							tmarr.push(userid);
 							$('.team_members').val(tmarr.join());
@@ -506,13 +506,13 @@ jQuery(document).ready(function($j){
 	uploadButton = $('<div/>')
 		.addClass('btn btn-primary')
 		.prop('disabled', true)
-		.text('Ачааллаж байна...')
+		.text('Loading...')
 		.on('click', function () {
 			var $this = $(this),
 				data = $this.data();
 			$this
 				.off('click')
-				.text('Цуцлах')
+				.text('Remove')
 				.on('click', function () {
 					$this.remove();
 					data.abort();
@@ -577,7 +577,7 @@ jQuery(document).ready(function($j){
 				}
 				if (index + 1 === data.files.length) {
 					data.context.find('div.btn')
-						.text('Хуулах')
+						.text('Save')
 						.prop('disabled', !!data.files.error);
 				}
 			}).on('fileuploadprogressall', function (e, data) {

@@ -131,7 +131,7 @@ class ProjectController extends Controller {
 			case 'addproject':
 				$rules = [
 					'title' => 'required|unique:projects',
-					'slug' => 'required|unique:projects|alphanum',
+					'slug' => 'required|unique:projects',
 					'category_ids' => 'required',
 				];
 				$v = Validator::make($request->all(), $rules);

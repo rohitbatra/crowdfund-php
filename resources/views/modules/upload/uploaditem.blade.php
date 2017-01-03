@@ -41,7 +41,7 @@
 						
 					  </div>
 					  <div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Хаах</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Upload</button>
 					  </div>
 					</div>
 				  </div>
@@ -54,7 +54,7 @@
 		@endif()
 		<span class="btn btn-success fileinput-button" data-toggle="modal" data-target="#modal_{{{$id}}}">
 			<i class="glyphicon glyphicon-edit"></i>
-			<span>Солих</span>
+			<span>Change</span>
 		</span>
 		<span class="btn btn-danger empty-field" data-field="{{{$id}}}">
 			<i class="glyphicon glyphicon-remove"></i>

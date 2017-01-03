@@ -26,7 +26,7 @@ abstract class Controller extends BaseController
 		$this->layout = 'layouts.default';
 		$this->user = Auth::user();
 		$this->scripts = [
-			'header'=>['https://code.jquery.com/jquery-2.1.4.min.js','https://www.google.com/recaptcha/api.js?hl=en&render=explicit&onload=callRecaptcha'],
+			'header'=>['https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js','https://www.google.com/recaptcha/api.js?hl=en&render=explicit&onload=callRecaptcha'],
 			'footer'=>['bootstrap.min.js','app.js']
 		];
 		
@@ -150,7 +150,7 @@ abstract class Controller extends BaseController
 		if ($this->user){
 			$navigations['profile'] = [
 				['title'=>'My Projects','url'=>url('user/projects')],
-				['title'=>'Contact Support','url'=>url('user/support')],
+				['title'=>'Support','url'=>url('user/support')],
 				['title'=>'Edit Profile','url'=>url('user/edit/profile')],
 				['title'=>'Change Password','url'=>url('user/edit/profile/password')],
 			];

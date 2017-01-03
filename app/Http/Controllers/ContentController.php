@@ -123,7 +123,7 @@ class ContentController extends Controller
 
 	public function index(Request $request){
 		$this->layout = 'content.index';
-		$this->metas['title'] = "Агуулгын удирдлага";
+		$this->metas['title'] = "Manage Content";
 		$this->view = $this->BuildLayout();
 		$contentTypes = ContentType::all();
 		$categories = Category::getCategoryOptions('2');

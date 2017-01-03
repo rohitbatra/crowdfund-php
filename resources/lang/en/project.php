@@ -12,5 +12,5 @@ return [
     'totalpayment' => 'Total Support',
     'daysleft' => 'Days Left',
     'updated' => 'Project Updated ',
-    'updates' => 'Reform',
+    'updates' => 'Update',
 ];

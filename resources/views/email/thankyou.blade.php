@@ -4,7 +4,8 @@
 <h3>Hello {{{$user->fullname}}}</h3>
 <p>
 Thank You for Registering.
-<hr>
+</p>
+<p>
 If you've not registered with us at <a href="https://www.poloniago.com">PoloniaGo</a>, you can just ignore this email.
 </p>
 <p>

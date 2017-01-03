@@ -60,14 +60,14 @@
 		@endif
 	</td>
 	<td>
-		<a href="{{{url('project/edit/'.$p->id)}}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> {{{trans('messages.edit')}}}</a> 
-		<br>
-		<a href="{{{url('project/delete/'.$p->id)}}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{{trans('messages.delete')}}}</a>
-		<br>
-		<a href="{{{url('project/updates/'.$p->id)}}}" class="btn btn-default">{{{trans('project.updates')}}}</a>
-		<br>
+		<a href="{{{url('project/edit/'.$p->id)}}}" class="btn"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> {{{trans('messages.edit')}}}</a>
+		<br />
+		<a href="{{{url('project/delete/'.$p->id)}}}" class="btn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{{trans('messages.delete')}}}</a>
+		<br />
+		<a href="{{{url('project/updates/'.$p->id)}}}" class="btn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> {{{trans('project.updates')}}}</a>
+		<br />
 		{!! Form::open() !!}
-		<a href="{{{url('project/delete/'.$p->id)}}}" class="btn btn-default" data-projectid="{{$p->id}}" data-action="supporterListModal">{{{trans('project.supporters')}}}</a> 
+		<a href="javascript:void(1)" data-projectid="{{$p->id}}" class="btn" data-action="supporterListModal"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{{trans('project.supporters')}}}</a>
 		{!! Form::close() !!}
 	</td>
 </tr>

@@ -1,7 +1,8 @@
 @extends('layouts.default')
 @section('header')
 	@parent
-	<p>Edit Project.</p>
+	<h3>{{{$project->title}}}</h3>
+	<p>Edit Project Information</p>
 @endsection
 
 @section('content')

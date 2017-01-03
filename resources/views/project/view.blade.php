@@ -77,23 +77,22 @@
 	
 	<div class="row">
 		<div class="col-md-8">
-			<div>
-				# @include('modules.categories.list',['categories'=>$project->categories])
-			</div>
-			<p>
-				{{{$project->intro}}}
-			</p>
-			<div class="share">
-				Shares
-				@foreach($project->shares as $s)
-					<a href="{{{$s['href']}}}" data-action="share" data-href="{{{$s['href']}}}" class="btn btn-default btn-share btn-{{{$s['class']}}}">{{{$s['class']}}}</a>
-				@endforeach
-			</div>
+            <div class="padding">
+				Categories: @include('modules.categories.list',['categories'=>$project->categories])
+                <p>{{{$project->intro}}}</p>
+                <hr class="tiny" />
+                <div class="share">
+                    <div class="fb-share-button" data-href="{{{$project->url}}}" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{{urlencode($project->url)}}}&amp;src=sdkpreparse">Share</a></div>
+                </div>
+            </div>
 		</div>
 		<div class="col-md-4">
 			<div class="padding">
 				<div class="project-leader">Project Leader: @include('modules.user.list',['users'=>[$project->leader],'contact'=>true])</div>
-				<div class="project-teammembers">Project Members: @include('modules.user.list',['users'=>$project->team,'contact'=>true])</div>
+                <a class="btn" type="button" data-toggle="collapse" data-target="#collapseProjectMemebers" aria-expanded="false" aria-controls="collapseProjectMemebers">
+                    <span class="glyphicon glyphicon-list"></span> View Project Members
+                </a>
+                <div id="collapseProjectMemebers" class="project-teammembers collapse">@include('modules.user.list',['users'=>$project->team,'contact'=>true])</div>
 			</div>
 		</div>
 	</div>
@@ -118,7 +117,7 @@
 	  <div class="col-md-8">
 		  <div class="tab-content">
 			<div role="tabpanel" class="tab-pane active" id="description">
-				<h2>About Project</h2>
+				<h2>About the Project</h2>
 				@if($project->image)
 				<img src="{{{asset('images/project/large/'.$project->image)}}}"/>
 				@endif

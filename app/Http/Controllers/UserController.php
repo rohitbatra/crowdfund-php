@@ -74,6 +74,8 @@ class UserController extends Controller {
    */
 	public function store(Request $request){
 		$v = Validator::make($request->all(), [
+			'firstname' => 'required|alpha_num',
+			'lastname' => 'required|alpha_num',
 			'username' => 'required|unique:users|alpha_num',
 			'email' => 'required|unique:users|email',
 			'emailConfirmation' => 'required|same:email',
@@ -96,6 +98,9 @@ class UserController extends Controller {
 			//return redirect('/user/register')->back()->withErrors($v->errors())->withInput($request->except('password'));
 		} else {
 			$user = new User;
+			$user->firstname = $request->input('firstname');
+			$user->lastname = $request->input('lastname');
+			$user->username = $request->input('username');
 			$user->email = $request->input('email');
 			$user->password = Hash::make($request->input('password'));
 			$user->register_ip = $_SERVER['REMOTE_ADDR'];
@@ -115,8 +120,8 @@ class UserController extends Controller {
 
 	public function sendThankYouEmail($user){
 		Mail::send('email.thankyou', ['user' => $user], function ($m) use ($user) {
-			$m->from('noreply@poloniago.com', 'PoloniaGo No-reply');
-			$m->to($user->email, $user->fullname)->subject('Thank You for signing up with PoloniaGo!');
+			$m->from('noreply@poloniago.com', 'No-Reply');
+			$m->to($user->email, $user->fullname)->subject('[PoloniaGo] Thank You for signing up!');
 		});
 	}
 	
