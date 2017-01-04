@@ -230,10 +230,18 @@ class ProjectController extends Controller {
 		$edit = false;
 		if($project->exists()){
 			$project = $project->first();
-			if($this->user->id == $project->user_id){
+
+			if($this->user->id == $project->user_id)
+            {
 				$this->metas['title'] = $project->title;
 				$this->layout = 'project.edit';
-			} else {
+
+			} else if($this->user->role == 1)
+            {
+                $this->metas['title'] = $project->title;
+                $this->layout = 'project.edit';
+            }else
+            {
 				$this->metas['title'] = 'Permission Denied';
 				$this->layout = 'errors.403';
 				$status = "You do not have permission to edit this project";
