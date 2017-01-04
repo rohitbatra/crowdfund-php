@@ -20,7 +20,9 @@
 			</div>
 		</div>
 		<div class="container-fluid">
-			@yield('content')
+            <div class="container">
+			    @yield('content')
+            </div>
 		</div>
 		@include('layouts.parts.footer')
 		@include('layouts.parts.endbody')

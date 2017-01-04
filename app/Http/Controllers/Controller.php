@@ -130,7 +130,6 @@ abstract class Controller extends BaseController
 				],
 			],
 			'about'=>[
-				['title'=>'Blog','url'=>url('blog')],
 				['title'=>'Partners','url'=>url('about-partners')],
 				['title'=>'Supporters','url'=>url('about-supporters')],
 				['title'=>'Terms of Service','url'=>url('tos')],

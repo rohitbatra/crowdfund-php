@@ -87,23 +87,23 @@
 
 				<div class="col-md-3 pull-right">
 
-					<a target="_blank" href="http://www.facebook.com/PoloniaGo">
+					<a target="_blank" href="//www.facebook.com/PoloniaGo">
 						<img src="{{{ asset('images/social_icons/FB_logo_29.png') }}}" class="social_icons_homepage" />
 					</a>
 
-					<a target="_blank" href="http://www.twitter.com/poloniago">
+					<a target="_blank" href="//www.twitter.com/poloniago">
 						<img src="{{{ asset('images/social_icons/TW_logo.png') }}}" class="social_icons_homepage" />
 					</a>
 
-					<a target="_blank" href="https://www.youtube.com/user/PoloniaGo">
+                    <a target="_blank" href="//blog.poloniago.com/">
+                        <img src="{{{ asset('images/social_icons/tumblr_logo.png') }}}" class="social_icons_homepage" />
+                    </a>
+
+					<a target="_blank" href="javascript:void(1);">
 						<img src="{{{ asset('images/social_icons/YT_logo_24.png') }}}" class="social_icons_homepage" />
 					</a>
 
-					<a target="_blank" href="https://www.instagram.com/poloniago/">
-						<img src="{{{ asset('images/social_icons/IG_logo.png') }}}" class="social_icons_homepage" />
-					</a>
-
-					<a target="_blank" href="#" >
+					<a target="_blank" href="javascript:void(1);">
 						<img src="{{{ asset('images/social_icons/IN_logo_28.png') }}}" class="social_icons_homepage" />
 					</a>
 				</div>
