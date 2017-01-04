@@ -24,6 +24,7 @@ class ProjectController extends Controller {
 				$featured->where('category_ids',$categoryObject->id);
 			}
 		}
+
 		$featured = $featured->get()->take(3);
 		$projects = $projects->paginate(6);
 		$this->view = $this->BuildLayout();
@@ -177,7 +178,8 @@ class ProjectController extends Controller {
 					$return['status'] = false;
 					$return['errors'] = $v->errors();
 				} else {
-					if($request->has('video')){
+					if($request->has('video'))
+                    {
 						$video = $request->get('video');
 						$parsed = $this->parseVideoUrl($video);
 						if($parsed['status'] == false){
@@ -196,12 +198,15 @@ class ProjectController extends Controller {
 		$project = Project::where('slug',$slug);
 		$status = $video = null;
 		$edit = false;
+
 		if(!$this->user){
 			$project->where('status',1);
 		}
 		if($project->exists()){
 			$project = $project->first();
 			$this->metas['title'] = $project->title;
+			$this->metas['description'] = $project->intro;
+			$this->metas['keywords'] = $project->tags;
 			$this->layout = 'project.view';
 			if($this->user && ($this->user->id == $project->user_id || $this->user->role == 1)){
 				$edit = true;
@@ -261,23 +266,32 @@ class ProjectController extends Controller {
 		;
 	}
 
-	public function update(Request $request){
+	public function update(Request $request)
+    {
+
 		$rules = [
 			//'image' => 'required',
 			//'video' => 'required',
 			//'intro' => 'required',
 			//'category_ids' => 'detail',
 		];
+
 		$v = Validator::make($request->all(), $rules);
-		if ($v->fails()){
+
+		if ($v->fails())
+        {
 			$return['status'] = false;
 			$return['errors'] = $v->errors();
 		} else {
+
 			$project = Project::find($request->get('id'));
 			//Check if project is user's own
-			if($this->user->id == $project->user_id){
+
+            if($this->user->id == $project->user_id || $this->user->role == 1)
+            {
 				$project->image = $request->get('image');
 				$project->intro = $request->get('intro');
+				$project->tags = $request->get('tags');
 				$project->video = $request->get('video');
 				$project->detail = $request->get('detail');
 				$project->team_members = $request->get('team_members');
@@ -286,7 +300,9 @@ class ProjectController extends Controller {
 			Session::flash('status', trans('project.updated'));
 			return redirect('project/edit/'.$project->id);
 		}
-		if($return['status'] == false){
+
+		if($return['status'] == false)
+        {
 			return $return;
 		}
 		return redirect()->back()->withErrors(['error'=>trans('project.cantupdate')]);

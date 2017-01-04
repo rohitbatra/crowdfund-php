@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration {
 			$table->string('team_members');
 			$table->string('image', 255);
 			$table->text('intro');
+			$table->string('tags',255);
 			$table->text('detail');
 			$table->string('video');
 			$table->boolean('featured');

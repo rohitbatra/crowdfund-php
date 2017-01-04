@@ -33,6 +33,7 @@ $factory->define(App\Project::class, function (Faker\Generator $faker) {
         'category_ids' => rand(3,6),
         'user_id' => rand(1,20),
         'intro' => $faker->text(),
+        'tags' => $faker->text(),
         'detail' => $faker->text(),
 		'status'=> 1,
 		'slug' => $faker->word(),

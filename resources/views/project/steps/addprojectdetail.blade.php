@@ -70,6 +70,7 @@
 		@include('modules.upload.uploaditem',['id'=>'image','label'=>'Project Header Image','view'=>'create','old'=>$project->image,'type'=>'project'])
 		@include('modules.form.formgroup',['data'=>$project,'type'=>'text','label'=>'Video','id'=>'video','note'=>'Video is mandatory & it should be able explain the Project. ** Youtube & Vimeo Only Supported **'])
 		@include('modules.form.formgroup',['data'=>$project,'type'=>'text','label'=>'Project Summary','id'=>'intro','note'=>'This is where you explain your Project briefly. Mention important details.'])
+		@include('modules.form.formgroup',['data'=>$project,'type'=>'text','label'=>'Project Keywords','id'=>'tags','note'=>'Enter some keywords which define your Projects (comma-separated values only).'])
 		@include('modules.form.formgroup',['data'=>$project,'type'=>'textarea','label'=>'Project Detail','id'=>'detail','cke'=>'true',
 		'note' => 'Write a story/description that does justice to your Project and makes the supporter reach the donate button. Please Avoid pasting information directly from a Word document.'])
 		{!! Form::hidden('step','addprojectdetail',['class'=>'step']) !!}
