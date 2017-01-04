@@ -26,7 +26,7 @@
 	</div>
 	@include('modules.form.formgroup',['data'=>$content,'type'=>'text','label'=>'Description','id'=>'description'])
 	@include('modules.form.formgroup',['data'=>$content,'type'=>'textarea','label'=>'Summary','id'=>'summary'])
-	@include('modules.form.formgroup',['data'=>$content,'type'=>'textarea','label'=>'Content','id'=>'content','cke'=>true,'required'=>true])
+	@include('modules.form.formgroup',['data'=>$content,'type'=>'textarea','label'=>'Content','id'=>'content','cke'=>true])
 		
 	{!! Form::submit('Submit',['class'=>'btn btn-default']) !!}
 {!! Form::close() !!}

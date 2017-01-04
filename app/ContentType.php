@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ContentType extends Model
 {
+    protected $table = 'content_types';
+    public $timestamps = true;
+
     public static function getContentTypeOptions(){
 		$return = [];
 		$types = self::all();

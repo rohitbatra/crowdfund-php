@@ -6,10 +6,10 @@
 @endsection
 @section('content')
 	@include('errors.errors')
-	<table class="table">
+	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>ID</th>
+				<th>No.</th>
 				<th>{{{trans('messages.title')}}}</th>
 				<th>{{{trans('messages.status')}}}</th>
 				<th>{{{trans('messages.intro')}}}</th>

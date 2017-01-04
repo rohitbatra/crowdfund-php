@@ -121,7 +121,8 @@ class ContentController extends Controller
 		return $contents;
 	}
 
-	public function index(Request $request){
+	public function index(Request $request)
+    {
 		$this->layout = 'content.index';
 		$this->metas['title'] = "Manage Content";
 		$this->view = $this->BuildLayout();
@@ -189,9 +190,10 @@ class ContentController extends Controller
 		}
 		if($request->has('id')){
 			//$content = Content::find($request->get('id'));
-			if($this->user->id == $content->user_id){
+			if($this->user->id == $content->user_id || $this->user->role == 1){
 				$content->fill($request->all());
 				$content->save();
+                return redirect()->back()->withErrors(['error'=>['Content is Updated.']]);
 			} else {
 				return redirect()->back()->withErrors(['error'=>['This is not your content']]);
 			}
