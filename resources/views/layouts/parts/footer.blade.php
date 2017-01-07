@@ -95,15 +95,15 @@
 						<img src="{{{ asset('images/social_icons/TW_logo.png') }}}" class="social_icons_homepage" />
 					</a>
 
-                    <a target="_blank" href="//blog.poloniago.com/">
+                    <a target="_blank" href="//poloniago.tumblr.com/">
                         <img src="{{{ asset('images/social_icons/tumblr_logo.png') }}}" class="social_icons_homepage" />
                     </a>
 
-					<a target="_blank" href="javascript:void(1);">
+					<a target="_blank" href="//www.youtube.com/channel/UCrwSc9RQj-FrThMe_5mc58g">
 						<img src="{{{ asset('images/social_icons/YT_logo_24.png') }}}" class="social_icons_homepage" />
 					</a>
 
-					<a target="_blank" href="javascript:void(1);">
+					<a target="_blank" href="javascript:void(1);" >
 						<img src="{{{ asset('images/social_icons/IN_logo_28.png') }}}" class="social_icons_homepage" />
 					</a>
 				</div>
@@ -117,11 +117,3 @@
 		</footer>
 	</div>
 </div>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1112862268832864";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>

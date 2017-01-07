@@ -81,9 +81,46 @@
 				Categories: @include('modules.categories.list',['categories'=>$project->categories])
                 <p>{{{$project->intro}}}</p>
                 <hr class="tiny" />
-                <div class="share">
-                    <div class="fb-share-button" data-href="{{{$project->url}}}" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{{urlencode($project->url)}}}&amp;src=sdkpreparse">Share</a></div>
-                </div>
+                <ul class="list-inline">
+                    <li>
+                        <h5>Share this on: </h5>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{{urlencode($project->url)}}}&amp;src=sdkpreparse">
+                            <img class="social_icons_homepage" src="{{{asset('images/social_icons/FB_logo_29.png')}}}" />
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://twitter.com/share?text={{{$project->title}}}&amp;url={{{urlencode($project->url)}}}&amp;tags={{{$project->tags}}}">
+                            <img class="social_icons_homepage"  src="{{{asset('images/social_icons/TW_logo.png')}}}" />
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://plus.google.com/share?url={{{urlencode($project->url)}}}">
+                            <img  class="social_icons_homepage" src="{{{asset('images/social_icons/gplus_logo.png')}}}" />
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{{urlencode($project->url)}}}&amp;title={{{$project->title}}}&amp;summary={{{$project->summary}}}">
+                            <img class="social_icons_homepage"  src="{{{asset('images/social_icons/IN_logo_28.png')}}}" />
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.tumblr.com/share/link?url={{{urlencode($project->url)}}}&amp;name={{{$project->title}}}&amp;description={{{$project->summary}}}">
+                            <img class="social_icons_homepage"  src="{{{asset('images/social_icons/tumblr_logo.png')}}}" />
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://pinterest.com/pin/create/button/?url={{{urlencode($project->url)}}}&description={{{$project->title}}}">
+                            <img class="social_icons_homepage"  src="{{{asset('images/social_icons/PIN_logo.png')}}}" />
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site <br/>  <a href='{{{$project->url}}}'>{{{$project->url}}}</a>" title="Share by Email">
+                            <img class="social_icons_homepage"  src="{{{asset('images/social_icons/mail_icon.png')}}}" />
+                        </a>
+                    </li>
+                </ul>
             </div>
 		</div>
 		<div class="col-md-4">
