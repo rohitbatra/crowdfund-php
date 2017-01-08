@@ -109,7 +109,8 @@ abstract class Controller extends BaseController
 		return $return;
 	}
 
-	public function BuildLayout(){
+	public function BuildLayout()
+    {
 		$settings = Setting::allSetting();
 		$navigations = [
 			'super'=>[
@@ -142,7 +143,8 @@ abstract class Controller extends BaseController
 		];
 		
 		$categories = \App\Category::where('type',1)->get();
-		foreach($categories as $c){
+		foreach($categories as $c)
+        {
 			$navigations['categories'][]=['title'=>$c->title,'url'=>$c->url];
 		}
 
@@ -161,11 +163,12 @@ abstract class Controller extends BaseController
 			
 			$navigations['admin'] = [
 				['title'=>'All Projects','url'=>url('admin/projects')],
-				['title'=>'All Categories','url'=>url('admin/categories')],
+				['title'=>'All Categories','url'=>url('admin/categories/project')],
 				['title'=>'All Content','url'=>url('admin/content')],
 			];
 			
-			if ($this->user->role == 1){
+			if ($this->user->role == 1)
+            {
 				$navigations['user'][] = ['title'=>'Admin','url'=>url('admin'),'child'=>$navigations['admin']];
 			}
 		}

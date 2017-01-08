@@ -1,15 +1,11 @@
 <?php
-App::setLocale('mn');
+App::setLocale('en');
 //Starting 5.2 web middleware has to be included
 Route::group(['middleware' => ['web','striptags']], function () {
 	//Home Route
 	Route::get('/', 'HomeController@index');
 	Route::get('home', 'HomeController@index');
-	Route::get('blog', 'ContentController@blog');
-	Route::get('blog/category/{category_slug}', 'ContentController@blog');
-	Route::get('blog/search', 'ContentController@blog');
-	Route::get('blog/{category_slug}/{slug}', 'ContentController@blogItem');
-	
+
 
 	//User Route
 	Route::get('/user/login/{provider?}', 'UserController@login');
@@ -115,6 +111,7 @@ Route::group(['middleware' => ['web','striptags']], function () {
 		Route::get('categories/edit/{id?}', 'CategoryController@create');
 		Route::post('categories/store', 'CategoryController@store');
 		Route::post('categories/update', 'CategoryController@update');
+		Route::get('categories/delete/{id?}', 'CategoryController@destroy');
 		Route::get('categories/{type?}', 'CategoryController@index');
 		// Contents
 		Route::get('content/create', 'ContentController@create');

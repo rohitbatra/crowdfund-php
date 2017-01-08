@@ -18,17 +18,20 @@
 	@if(isset($categories) && !empty($categories))
 		<table class="table table-striped table-bordered">
 			<tr>
-				<th>No.</th>
 				<th>Name</th>
 				<th>Slug</th>
-				<th>Type</th>
+				<th>Description</th>
+				<th>Actions</th>
 			</tr>
 			@foreach($categories as $c)
 			<tr>
-				<td>{{{$c->id}}}</td>
 				<td>{{{$c->title}}}</td>
 				<td>{{{$c->slug}}}</td>
-				<td>{{{$c->typetitle}}}</td>
+				<td>{{{$c->description}}}</td>
+				<td>
+                    <a href="{{{url('admin/categories/edit/'.$c->id)}}}" class="btn"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
+                    <a href="{{{url('admin/categories/delete/'.$c->id)}}}" class="btn text-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>
+                </td>
 			</tr>
 			@endforeach
 		</table>

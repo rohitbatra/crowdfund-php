@@ -4,7 +4,7 @@
     </div>
     <br/>
     <div class="pull-right">
-        <a href="{{{url('admin/categories')}}}" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span> Categories</a>
+        <a href="{{{url('admin/categories/project')}}}" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span> Categories</a>
         <a href="{{{url('admin/categories/create')}}}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Category</a>
     </div>
 </div>
