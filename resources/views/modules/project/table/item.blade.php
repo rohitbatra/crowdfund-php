@@ -16,12 +16,12 @@
 	<td class="text-center">
 		{{{$p->statustext}}}
 		@if(isset($user) && $user->role == 1)
+			<hr class="tiny"/>
+			<a href="{{{url('project/enable/'.$p->id)}}}" class="btn text-success"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> {{{trans('messages.enable')}}}</a>
 			<br>
-			<a href="{{{url('project/enable/'.$p->id)}}}"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> {{{trans('messages.enable')}}}</a>
+			<a href="{{{url('project/disable/'.$p->id)}}}" class="btn text-danger"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> {{{trans('messages.disable')}}}</a>
 			<br>
-			<a href="{{{url('project/disable/'.$p->id)}}}"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> {{{trans('messages.disable')}}}</a> 
-			<br>
-			<a href="{{{url('project/lock/'.$p->id)}}}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> {{{trans('messages.lock')}}}</a> 
+			<a href="{{{url('project/lock/'.$p->id)}}}" class="btn text-muted"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> {{{trans('messages.lock')}}}</a>
 		@endif
 	</td>
 	<td class="text-center">
@@ -62,12 +62,12 @@
 	<td>
 		<a href="{{{url('project/edit/'.$p->id)}}}" class="btn"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> {{{trans('messages.edit')}}}</a>
 		<br />
-		<a href="{{{url('project/delete/'.$p->id)}}}" class="btn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{{trans('messages.delete')}}}</a>
+		<a href="{{{url('project/delete/'.$p->id)}}}" class="btn text-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{{trans('messages.delete')}}}</a>
 		<br />
-		<a href="{{{url('project/updates/'.$p->id)}}}" class="btn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> {{{trans('project.updates')}}}</a>
+		<a href="{{{url('project/updates/'.$p->id)}}}" class="btn text-success"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> {{{trans('project.updates')}}}</a>
 		<br />
 		{!! Form::open() !!}
-		<a href="javascript:void(1)" data-projectid="{{$p->id}}" class="btn" data-action="supporterListModal"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{{trans('project.supporters')}}}</a>
+		<a href="javascript:void(1)" data-projectid="{{$p->id}}" class="btn text-muted" data-action="supporterListModal"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{{trans('project.supporters')}}}</a>
 		{!! Form::close() !!}
 	</td>
 </tr>
