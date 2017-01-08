@@ -308,13 +308,29 @@ class ProjectController extends Controller {
 		return redirect()->back()->withErrors(['error'=>trans('project.cantupdate')]);
 	}
 
-	public function delete($id=null){
+	public function delete($id=null)
+    {
 		$project = Project::find($id);
-		if($project->status > 0){
-			return redirect()->back()->withErrors(['error'=>trans('project.cantdelete')]);
-		}
-		if($project->user_id == $this->user->id || $this->user->role == 1){
-			$project->delete();
+
+        if($project->user_id == $this->user->id || $this->user->role == 1)
+        {
+            if($project->status > 0)
+            {
+                if($project->status == 1)
+                {
+                    $state = "Project in Active State.";
+                }elseif($project->status == 2)
+                {
+                    $state = "Project in Locked State.";
+
+                }else{
+                    $state = "Project in Unknown State.";
+                }
+                return redirect()->back()->withErrors(['error'=>trans('project.cantdelete') ." -- {$state}"]);
+            }else{
+                $project->delete();
+            }
+
 		} else {
 			return redirect()->back()->withErrors(['error'=>trans('project.cantdelete')]);
 		}
