@@ -6,34 +6,31 @@
 
 @section('content')
 	@include('errors.errors')
-	@include('content.filter')
 	@if(isset($contents) && !empty($contents))
 		<table class="table table-striped table-bordered">
 			<tr>
                 <th>{{trans('messages.title')}}</th>
                 <th>{{trans('messages.status')}}</th>
-                <th>{{trans('messages.category')}}</th>
-                <th>{{trans('messages.type')}}</th>
-                <th>{{trans('messages.actions')}}</th>
+                <th colspan="3" class="text-center">{{trans('messages.actions')}}</th>
             </tr>
 			@foreach($contents as $c)
 			<tr>
                 <td><a href="{{{$c->url}}}">{{{$c->title}}}</a></td>
                 <td>{{{ucfirst($c->status)}}}</td>
-                <td>{{{$c->category->title}}}</td>
-                <td>{{{$c->contenttype->title}}}</td>
-				<td>
-					<a href="{{{url('admin/content/edit/'.$c->id)}}}">{{trans('messages.edit')}}</a> | 
-					
-					@if($c->trashed())
-						<a href="{{{url('admin/content/restore/'.$c->id)}}}">{{trans('messages.restore')}}</a> |
+                <td class="text-center">
+					<a href="{{{url('admin/content/edit/'.$c->id)}}}" class="btn"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> {{trans('messages.edit')}}</a>
+                </td>
+                <td class="text-center">
+                    @if($c->trashed())
+						<a href="{{{url('admin/content/restore/'.$c->id)}}}" class="btn text-success"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> {{trans('messages.restore')}}</a>
 					@else
-						<a href="{{{url('admin/content/delete/'.$c->id)}}}">{{trans('messages.trash')}}</a> |
+						<a href="{{{url('admin/content/delete/'.$c->id)}}}" class="btn text-muted"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {{trans('messages.trash')}}</a>
 					@endif
-					
-					<a href="{{{url('admin/content/destroy/'.$c->id)}}}">{{trans('messages.destroy')}}</a>
-				</td>
-			</tr>
+                </td>
+                <td class="text-center">
+					<a href="{{{url('admin/content/destroy/'.$c->id)}}}" class="btn text-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{trans('messages.destroy')}}</a>
+                </td>
+            </tr>
 			@endforeach
 			<tfoot>
 				{!! $contents->links() !!}

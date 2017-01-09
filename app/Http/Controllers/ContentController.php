@@ -15,7 +15,8 @@ use Validator;
 
 class ContentController extends Controller
 {
-    public function appendScriptStyle(){
+    public function appendScriptStyle()
+    {
 		//for cke
 		array_push($this->scripts['header'],'../libraries/ckeditor/ckeditor.js');
 	}
@@ -32,12 +33,15 @@ class ContentController extends Controller
 			abort('404');
 		}
 	}
-	
-	public function item($slug=null){
+
+	public function item($slug=null)
+    {
 		$content = Content::where('slug',$slug)->where('status','publish')->first();
-		if ($content){
+		if ($content)
+        {
 			$this->layout = 'content.item';
 			$this->metas['title'] = $content->title;
+			$this->metas['description'] = $content->description;
 			$this->view = $this->BuildLayout();
 			return $this->view->withContent($content);
 		} else {
@@ -45,33 +49,12 @@ class ContentController extends Controller
 		}
 	}
 
-	public function blog(Request $request,$category_slug=null){
-		$this->layout = 'content.blog';
-		$this->metas['title'] = trans('blog.blog');
-		$this->view = $this->BuildLayout();
-		$categories = Category::where('type',3)->get();
-		return $this->view
-			->withBlogs($this->getContents($request,2,$category_slug))
-			->withCategories($categories);
-	}
-
-	public function blogItem($category_slug,$slug){
-		$category = Category::where('slug',$category_slug)->first();
-		$content = Content::where('slug',$slug)->where('category_id',$category->id)->first();
-		if ($content){
-			$this->layout = 'content.item';
-			$this->metas['title'] = $content->title;
-			$this->view = $this->BuildLayout();
-			return $this->view->withContent($content);
-		} else {
-			abort('404');
-		}
-	}
-
-	public function projectItem($project_slug,$slug){
+	public function projectItem($project_slug,$slug)
+    {
 		$project = Project::where('slug',$project_slug)->first();
 		$content = Content::where('slug',$slug)->where('category_id',$project->id)->first();
-		if ($content){
+		if ($content)
+        {
 			$this->layout = 'content.item';
 			$this->metas['title'] = $content->title;
 			$this->view = $this->BuildLayout();
@@ -81,23 +64,34 @@ class ContentController extends Controller
 		}
 	}
 
-	public function getContents($request,$type=null,$category_slug=null){
-		$contents = Content::orderBy('created_at','desc')->where('status','publish');
+	public function getContents($request,$type=null,$category_slug=null)
+    {
+		$contents = Content::orderBy('created_at','DESC')->withTrashed();
 		
-		if($request->has('title')){
+		if($request->has('title'))
+        {
 			$contents->where('title','like','%'.$request->get('title').'%');
 		}
-		if($request->has('category_id')){
+
+        if($request->has('category_id'))
+        {
 			$contents->where('category_id',$request->get('category_id'));
 		}
-		if($request->has('type')){
+
+        if($request->has('type'))
+        {
 			$contents->where('type',$request->get('type'));
 		}
-		if($type!=null){
+
+        if($type!=null)
+        {
 			$contents->where('type',$type);
 		}
-		if($category_slug!=null){
-			switch($type){
+
+        if($category_slug!=null)
+        {
+			switch($type)
+            {
 				case 1:
 				case 2:
 					$category = Category::where('slug',$category_slug)->first();
@@ -108,14 +102,18 @@ class ContentController extends Controller
 			}
 			$contents->where('category_id',$category->id);
 		}
-		if($request->has('status')){
+
+		if($request->has('status'))
+        {
 			$status = $request->get('status');
-			if($status == 'trashed'){
+			if($status == 'trashed')
+            {
 				$contents->onlyTrashed();
 			} else {
 				$contents->where('status',$request->get('status'));
 			}
 		}
+
 		$contents = $contents->paginate(15)->appends($request->except('page'));
 		
 		return $contents;
@@ -135,11 +133,13 @@ class ContentController extends Controller
 		;
 	}
 
-    public function create($id=null){
+    public function create($id=null)
+    {
 		$this->layout = 'content.create';
 		$this->metas['title'] = "Add Content";
-		if($id!=null){
-			$this->metas['title'] = "Content";
+		if($id!=null)
+        {
+			$this->metas['title'] = "Edit Content";
 		}
 		$this->appendScriptStyle();
 		$this->view = $this->BuildLayout();
@@ -148,49 +148,56 @@ class ContentController extends Controller
 			->withCategories(Category::getCategoryOptions(2))
 			->withContentTypeOptions(ContentType::getContentTypeOptions())
 			;
-		if($id!=null){
+		if($id!=null)
+        {
 			$content = Content::find($id);
 			$this->view->withContent($content);
 		}
 		return $this->view;
 	}
 
-	public function delete($id=null){
+	public function delete($id=null)
+    {
 		$content = Content::find($id)->delete();
 		return redirect()->back()->withErrors(['error'=>['Content Deleted']]);
 	}
 
-	public function destroy($id=null){
+	public function destroy($id=null)
+    {
 		$content = Content::where('id',$id)->forceDelete();
 		return redirect()->back()->withErrors(['error'=>['Content has been removed']]);
 	}
 
-	public function restore($id=null){
+	public function restore($id=null)
+    {
 		$content = Content::where('id',$id)->restore();
 		return redirect()->back()->withErrors(['error'=>['Content restored']]);
 	}
 
-	public function store(Request $request){
+	public function store(Request $request)
+    {
 		$rules = [
 			'title' => 'required',
 			'slug' => 'required|unique:contents',
-			'type' => 'required',
-			'category_id' => 'required',
 			'content' => 'required'
 		];
-		if($request->has('id')){
+		if($request->has('id'))
+        {
 			$content = Content::find($request->get('id'));
 			$rules = [
 				'slug' => 'required|unique:contents,title,'.$content->id,
 			];
 		}
 		$v = Validator::make($request->all(), $rules);
-		if ($v->fails()){
+		if ($v->fails())
+        {
 			return redirect()->back()->withErrors($v->errors())->withInput();
 		}
-		if($request->has('id')){
+		if($request->has('id'))
+        {
 			//$content = Content::find($request->get('id'));
-			if($this->user->id == $content->user_id || $this->user->role == 1){
+			if($this->user->id == $content->user_id || $this->user->role == 1)
+            {
 				$content->fill($request->all());
 				$content->save();
                 return redirect()->back()->withErrors(['error'=>['Content is Updated.']]);

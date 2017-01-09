@@ -4,7 +4,7 @@
     </div>
     <br/>
     <div class="pull-right">
-        <a href="{{{url('admin/content')}}}" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span> View Content List</a>
+        <a href="{{{url('admin/content')}}}" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span> Content List</a>
         <a href="{{{url('admin/content/create')}}}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Content</a>
     </div>
 </div>

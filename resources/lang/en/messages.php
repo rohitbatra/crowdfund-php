@@ -27,7 +27,7 @@ return [
     'type' => 'Type',
     'trash' => 'Trash',
     'destroy' => 'Destroy',
-    'restore' => 'Resume',
+    'restore' => 'Restore',
     'search' => 'Search',
     'anonymous' => 'Anonymous',
     'add' => 'Add',
