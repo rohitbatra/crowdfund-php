@@ -148,23 +148,30 @@ abstract class Controller extends BaseController
 			$navigations['categories'][]=['title'=>$c->title,'url'=>$c->url];
 		}
 
-		if ($this->user){
-			$navigations['profile'] = [
-				['title'=>'My Projects','url'=>url('user/projects')],
-				['title'=>'Support','url'=>url('user/support')],
-				['title'=>'Edit Profile','url'=>url('user/edit/profile')],
-				['title'=>'Change Password','url'=>url('user/edit/profile/password')],
-			];
-			
-			$navigations['user'] = [
-				['title'=>'My Profile','url'=>url('user/profile'),'child'=>$navigations['profile']],
-				['title'=>'Logout','url'=>url('user/logout')],
-			];
+		if ($this->user)
+        {
+            if($this->user->role !== 1)
+            {
+                $navigations[''] = [
+                    ['title'=>'My Projects','url'=>url('user/projects')],
+                    ['title'=>'Support','url'=>url('user/support')],
+                    ['title'=>'Edit Profile','url'=>url('user/edit/profile')],
+                    ['title'=>'Change Password','url'=>url('user/edit/profile/password')],
+                ];
+                $navigations['user'] = [
+                    ['title'=>'My Profile','url'=>url('user/profile'),'child'=>$navigations['profile']],
+                    ['title'=>'Logout','url'=>url('user/logout')],
+                ];
+            }else{
+                $navigations['user'] = [];
+            }
+
 			
 			$navigations['admin'] = [
-				['title'=>'All Projects','url'=>url('admin/projects')],
-				['title'=>'All Categories','url'=>url('admin/categories/project')],
-				['title'=>'All Content','url'=>url('admin/content')],
+				['title'=>'Projects','url'=>url('admin/projects')],
+				['title'=>'Categories','url'=>url('admin/categories/project')],
+				['title'=>'Content','url'=>url('admin/content')],
+                ['title'=>'Logout','url'=>url('user/logout')]
 			];
 			
 			if ($this->user->role == 1)
