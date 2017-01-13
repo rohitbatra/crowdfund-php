@@ -2,12 +2,14 @@
 
 @section('header')
 	@parent
-	<p>Welcome User, Please Log-In to continue.</p>
+	<h3>Welcome User, Please Log-In to continue</h3>
+    <hr class="tiny"/>
 @endsection
 
 @section('content')
 	@include('errors.errors')
 	@include('modules.user.login')
-	<h3>Forgot the password:</h3>
-	<p>Do not worry <a href="{!!url('user/reset/password')!!}">Click Here</a> to reset your Password.
+    <hr class="tiny"/>
+	<h3>Forgot the password</h3>
+	<p>Don't worry <a href="{!!url('user/reset/password')!!}">Click Here</a> to reset your Password.
 @endsection

@@ -1,7 +1,8 @@
 @extends('layouts.default')
 @section('header')
 	@parent
-	<p>Register by filling the following fields.</p>
+	<h3>Register by filling the following fields.</h3>
+    <hr class="tiny"/>
 @endsection
 
 @section('content')

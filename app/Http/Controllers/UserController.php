@@ -62,7 +62,7 @@ class UserController extends Controller {
 			return redirect('/user/profile');
 		}
 		$this->layout = 'user.register';
-		$this->metas['title'] = "PoloniaGo Registration";
+		$this->metas['title'] = "User Registration | PoloniaGo";
 		$this->view = $this->BuildLayout();
 		return $this->view;
   }
@@ -159,18 +159,18 @@ class UserController extends Controller {
 			$return['url'] = url($currentPath);
 		} else {
 			$return['status'] = false;
-			$return['errors'] = ['general'=>['Please check your email and/or password or register']];
+			$return['errors'] = ['general'=>['<p style="color:red">Please check your email and/or password or register</p>']];
 		}
 		return $return;
 	}
   
 	public function login(Request $request,$provider=null){
 		$this->layout = 'user.login';
-		$this->metas['title'] = "User Login";
+		$this->metas['title'] = "User Login | PoloniaGo";
 		$this->view = $this->BuildLayout();
 		$user = $socialUser = '';
 
-		//https://laracasts.com/series/whats-new-in-laravel-5/episodes/9
+
 		switch ($provider) {
 			case 'facebook':
 			case 'twitter':
