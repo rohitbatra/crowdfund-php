@@ -152,7 +152,7 @@ abstract class Controller extends BaseController
         {
             if($this->user->role !== 1)
             {
-                $navigations[''] = [
+                $navigations['profile'] = [
                     ['title'=>'My Projects','url'=>url('user/projects')],
                     ['title'=>'Support','url'=>url('user/support')],
                     ['title'=>'Edit Profile','url'=>url('user/edit/profile')],
