@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 use Validator;
 use View;
+use Mail;
 use Session;
 use App\Category;
 use App\Project;
@@ -174,19 +175,23 @@ class ProjectController extends Controller {
 					//'category_ids' => 'detail',
 				];
 				$v = Validator::make($request->all(), $rules);
-				if ($v->fails()){
+				if ($v->fails())
+                {
 					$return['status'] = false;
 					$return['errors'] = $v->errors();
-				} else {
+				} else
+                {
 					if($request->has('video'))
                     {
 						$video = $request->get('video');
 						$parsed = $this->parseVideoUrl($video);
-						if($parsed['status'] == false){
+						if($parsed['status'] == false)
+                        {
 							return $parsed;
 						}
 					}
 					$return['status'] = true;
+                    $this->sendNewProjectEmail($request->get('id'));
 				}
 			break;
 		}
@@ -572,6 +577,29 @@ class ProjectController extends Controller {
 		$return['view'] = $supporterListModal;
 		return $return;
 	}
+
+    public function sendNewProjectEmail($id)
+    {
+        // Got the Project Id
+            // Get Project Title
+            // Get User Full Name & Email Address
+
+        $project = Project::find($id);
+
+        $user = User::find($project->user_id);
+
+        // User email
+        Mail::send('email.newprojectuser', ['user' => $user, 'project' => $project], function ($m) use ($user) {
+            $m->from('noreply@poloniago.com', 'No-Reply');
+            $m->to($user->email, $user->fullname)->subject('[PoloniaGo] Thank You for your new Submission!');
+        });
+
+        //Admin Notification
+        Mail::send('email.newprojectadmin', ['project' => $project], function ($m) use ($project)  {
+            $m->from('noreply@poloniago.com', 'No-Reply');
+            $m->to('admin@poloniago.com', 'Approver Admin')->subject('[PoloniaGo] We\'ve a new Submission!');
+        });
+    }
 }
 
 ?>
