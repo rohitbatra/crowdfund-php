@@ -68,7 +68,7 @@
 		<hr>
 		<h3>Project overview</h3>
 		@include('modules.upload.uploaditem',['id'=>'image','label'=>'Project Header Image','view'=>'create','old'=>$project->image,'type'=>'project'])
-		@include('modules.form.formgroup',['data'=>$project,'type'=>'text','label'=>'Video','id'=>'video','note'=>'Video is mandatory & it should be able explain the Project. ** Youtube & Vimeo Only Supported **'])
+		@include('modules.form.formgroup',['data'=>$project,'type'=>'text','label'=>'Video','id'=>'video','note'=>'Video is mandatory & it should be able explain the Project. ** Only Youtube Supported **'])
 		@include('modules.form.formgroup',['data'=>$project,'type'=>'text','label'=>'Project Summary','id'=>'intro','note'=>'This is where you explain your Project briefly. Mention important details.'])
 		@include('modules.form.formgroup',['data'=>$project,'type'=>'text','label'=>'Project Keywords','id'=>'tags','note'=>'Enter some keywords which define your Projects (comma-separated values only).'])
 		@include('modules.form.formgroup',['data'=>$project,'type'=>'textarea','label'=>'Project Detail','id'=>'detail','cke'=>'true',
