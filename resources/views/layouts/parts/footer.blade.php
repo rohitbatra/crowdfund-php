@@ -117,3 +117,13 @@
 		</footer>
 	</div>
 </div>
+<script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<script>
+    // Datatables generic Init
+    $(document).ready(function () {
+        $('.datatable').DataTable({
+            "aaSorting": []
+        });
+    })
+</script>

@@ -60,4 +60,5 @@
 	@endif
 
 	@yield('head')
+    <link media="all" type="text/css" rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
 </head>

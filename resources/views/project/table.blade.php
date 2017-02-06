@@ -10,7 +10,7 @@
 		@else
 			<h4>My Projects: </h4>
 		@endif
-		<table class="table table-bordered table-striped">
+		<table class="table table-bordered table-striped datatable">
 			<thead>
 				<tr>
 					<th>Project Number</th>
