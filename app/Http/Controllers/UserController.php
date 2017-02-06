@@ -47,7 +47,11 @@ class UserController extends Controller {
    */
   public function index()
   {
-    
+      $this->layout = 'user.list';
+      $this->metas['title'] = "User List";
+      $this->view = $this->BuildLayout();
+      $users = User::all();
+      return $this->view->withUsers($users);
   }
 
   /**
@@ -512,6 +516,30 @@ class UserController extends Controller {
 			->withPayments($this->user->payments()->paginate(5))
 		;
 	}
+
+    public function delete($id=null)
+    {
+        //TODO: Check for Projects associated with USER
+
+        User::find($id)->delete();
+        return redirect()->back()->withErrors(['error'=>['User Deleted']]);
+    }
+
+    public function lock($id=null)
+    {
+        $user = User::find($id);
+        $user->status = '0';
+        $user->save();
+        return redirect()->back()->withErrors(['error'=>['User De-Activated']]);
+    }
+
+    public function unlock($id=null)
+    {
+        $user = User::find($id);
+        $user->status = '1';
+        $user->save();
+        return redirect()->back()->withErrors(['error'=>['User Activated']]);
+    }
 }
 
 ?>

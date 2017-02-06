@@ -104,16 +104,26 @@ Route::group(['middleware' => ['web','striptags']], function () {
 	});
 
 	Route::group(['prefix' => 'admin','middleware' => ['auth', 'admin','except'=>'striptags']], function () {
-		// Projects
+
+        // Users
+        Route::get('users', 'UserController@index');
+        Route::get('users/delete/{id?}', 'UserController@delete');
+        Route::get('users/edit/{id?}', 'UserController@edit');
+        Route::get('users/lock/{id?}', 'UserController@lock');
+        Route::get('users/unlock/{id?}', 'UserController@unlock');
+
+        // Projects
 		Route::get('projects', 'ProjectController@adminProjects');
-		// Categories
+
+        // Categories
 		Route::get('categories/create', 'CategoryController@create');
 		Route::get('categories/edit/{id?}', 'CategoryController@create');
 		Route::post('categories/store', 'CategoryController@store');
 		Route::post('categories/update', 'CategoryController@update');
 		Route::get('categories/delete/{id?}', 'CategoryController@destroy');
 		Route::get('categories/{type?}', 'CategoryController@index');
-		// Contents
+
+        // Contents
 		Route::get('content/create', 'ContentController@create');
 		Route::get('content/edit/{id?}', 'ContentController@create');
 		Route::get('content/delete/{id?}', 'ContentController@delete');

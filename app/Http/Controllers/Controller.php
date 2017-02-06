@@ -168,9 +168,10 @@ abstract class Controller extends BaseController
 
 			
 			$navigations['admin'] = [
-				['title'=>'Projects','url'=>url('admin/projects')],
 				['title'=>'Categories','url'=>url('admin/categories/project')],
 				['title'=>'Content','url'=>url('admin/content')],
+				['title'=>'Projects','url'=>url('admin/projects')],
+				['title'=>'Users','url'=>url('admin/users')],
                 ['title'=>'Logout','url'=>url('user/logout')]
 			];
 			
