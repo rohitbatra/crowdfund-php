@@ -1,11 +1,12 @@
 @extends('layouts.default')
 @section('header')
     @parent
+    @include('user.actions')
 @endsection
 @section('content')
     @include('errors.errors')
     <div class="container">
-            <h4>All Users: </h4>
+            <h4></h4>
         <table class="table table-bordered table-striped datatable">
             <thead>
             <tr>

@@ -1,15 +1,11 @@
 @extends('layouts.default')
 @section('header')
 	@parent
+    @include('project.actions')
 @endsection
 @section('content')
 	@include('errors.errors')
 	<div class="container">
-		@if(isset($user) && $user->role == 1)
-			<h4>All Projects: </h4>
-		@else
-			<h4>My Projects: </h4>
-		@endif
 		<table class="table table-bordered table-striped datatable">
 			<thead>
 				<tr>

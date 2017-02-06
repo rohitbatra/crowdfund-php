@@ -1,6 +1,6 @@
 <tr>
 	<td>
-		{{{$p->id}}}
+		#PG-{{{date('Y',strtotime($p->created_at))}}}-{{{$p->id}}}
 	</td>
 	<td>
 		<a target="_blank" href="{{{$p->url}}}">{{{$p->title}}}</a>
