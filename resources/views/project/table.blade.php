@@ -25,13 +25,6 @@
 					@include('modules.project.table.item')
 				@endforeach
 			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="9">
-						{!! $projects->links() !!}
-					</td>
-				</tr>
-			</tfoot>
 		</table>
 	</div>
 @endsection
