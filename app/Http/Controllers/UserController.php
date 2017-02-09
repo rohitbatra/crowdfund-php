@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 //use validator, hash, auth
+use Symfony\Component\HttpFoundation\Session\Session;
 use Validator;
 use Hash;
 use Auth;
@@ -62,8 +63,9 @@ class UserController extends Controller {
   public function create()
   {
 		//if already logged in
-		if ($this->user){
-			return redirect('/user/profile');
+		if ($this->user)
+        {
+			return redirect('/user/edit/profile');
 		}
 		$this->layout = 'user.register';
 		$this->metas['title'] = "User Registration | PoloniaGo";
@@ -76,7 +78,8 @@ class UserController extends Controller {
    *
    * @return Response
    */
-	public function store(Request $request){
+	public function store(Request $request)
+    {
 		$v = Validator::make($request->all(), [
 			'firstname' => 'required|alpha_num',
 			'lastname' => 'required|alpha_num',
@@ -91,9 +94,11 @@ class UserController extends Controller {
 		//recaptcha implementation 
 		$recaptcha = new \ReCaptcha\ReCaptcha(Setting::getSetting('recaptchasecret'));
 		$resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
-		//dd($resp);
-		if ($v->fails() || $resp->isSuccess()==false){
-			if ($resp->isSuccess()==false){
+		    
+		if ($v->fails() || $resp->isSuccess()==false)
+        {
+			if ($resp->isSuccess()==false)
+            {
 				$v->errors()->add('g-recaptcha', 'I am not a Robot');
 			}
 			$errors = $v->errors();
@@ -116,20 +121,22 @@ class UserController extends Controller {
 			$this->sendThankYouEmail($user);
 			Auth::login($user,true);
 			$return['status'] = true;
-			$return['url'] = url('/user/profile/'.$user->usr_id);
+			$return['url'] = url('/user/edit/profile/'.$user->usr_id);
 			
 		}
 		return $return;
 	}
 
-	public function sendThankYouEmail($user){
+	public function sendThankYouEmail($user)
+    {
 		Mail::send('email.thankyou', ['user' => $user], function ($m) use ($user) {
 			$m->from('noreply@poloniago.com', 'No-Reply');
 			$m->to($user->email, $user->fullname)->subject('[PoloniaGo] Thank You for signing up!');
 		});
 	}
 	
-	public function loginPost(Request $request){
+	public function loginPost(Request $request)
+    {
 		//validate input
 		$v = Validator::make($request->all(), [
 			'email' => 'required|email',
@@ -141,7 +148,8 @@ class UserController extends Controller {
 		//$recaptcha = new \ReCaptcha\ReCaptcha(Setting::getSetting('recaptchasecret'));
 		//$resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
 
-		if ($v->fails()){
+		if ($v->fails())
+        {
 			$errors = $v->errors();
 			$return['status'] = false;
 			$return['errors'] = $errors;
@@ -157,8 +165,9 @@ class UserController extends Controller {
 			$remember = true;
 		}
 
-		if (Auth::attempt($userdata,$remember)) {
-			$currentPath= Route::getFacadeRoot()->current()->uri();
+		if (Auth::attempt($userdata,$remember))
+        {
+			$currentPath = Route::getFacadeRoot()->current()->uri();
 			$return['status'] = true;
 			$return['url'] = url($currentPath);
 		} else {
@@ -168,14 +177,17 @@ class UserController extends Controller {
 		return $return;
 	}
   
-	public function login(Request $request,$provider=null){
-		$this->layout = 'user.login';
+	public function login(Request $request,$provider=null)
+    {
+
+        $this->layout = 'user.login';
 		$this->metas['title'] = "User Login | PoloniaGo";
 		$this->view = $this->BuildLayout();
 		$user = $socialUser = '';
 
 
-		switch ($provider) {
+		switch ($provider)
+        {
 			case 'facebook':
 			case 'twitter':
 			case 'google':
@@ -196,7 +208,8 @@ class UserController extends Controller {
 				break;
 		}
 
-		if ($socialUser){
+		if ($socialUser)
+        {
 			$email = $socialUser->email;
 			$name = $socialUser->name;
 			$nameArray = explode(' ',$name);
@@ -204,7 +217,8 @@ class UserController extends Controller {
 			$lastname = str_replace($firstname,'',trim($name));
 			$fb_id = $tw_id = $gp_id = $photo_url = $local_photo_url = '';
 			$avatarSavePath = public_path('images/avatar');
-			switch ($provider) {
+			switch ($provider)
+            {
 				case 'facebook':
 					$fb_id = $socialUser->id;
 					$gender = $socialUser->user['gender'];
@@ -223,13 +237,15 @@ class UserController extends Controller {
 				break;
 			}
 			$userSocial = UserSocial::where('social',$provider)->where('socialname',$socialUser->id);
-			if (!empty($photo_url)){
+			if (!empty($photo_url))
+            {
 				$photo_urlArray = parse_url($photo_url);
 				unset($photo_urlArray['query']);
 				$photo_url = $photo_urlArray['scheme'].'://'.$photo_urlArray['host'].$photo_urlArray['path'];
 			}
 			
-			if ($userSocial->exists()){
+			if ($userSocial->exists())
+            {
 				$userId = $userSocial->get()->first()->user_id;
 				$user = User::find($userId);
 			} else {
@@ -276,34 +292,55 @@ class UserController extends Controller {
 			}
 			Auth::login($user,true);
 		}
-		
+
 		//if already logged in
-		if (Auth::check() || Auth::viaRemember()){
-			return redirect('/user/profile');
+		if (Auth::check() || Auth::viaRemember())
+        {
+            return redirect('/user/edit/profile');
 		}
 		
 		return $this->view;
 	}
 	
 	//logout
-	public function logout(){
+	public function logout()
+    {
 		Auth::logout(); // log the user out of our application
 		return redirect('/user/login'); // redirect the user to the login screen
 	}
 
-	public function profile($id=null){
+	public function profile($id=null)
+    {
+
 		$this->layout = 'user.profile';
-		if($id!=null){
+		if($id!=null)
+        {
 			$user = User::getUserbyid($id);
-			if ($user){
+			if ($user)
+            {
+                if($user->role == '1')
+                {
+                    // Admin user
+                    // Redirect to Projects Lists
+                    return redirect('/admin/projects');
+                }
 				$this->layout = 'user.profile';
 				$this->metas['title'] = $user->fullname." 's record";
 				$this->view = $this->BuildLayout();
+
 				return $this->view->withUser($user);
+
 			} else {
 				$this->metas['title'] = "Could not be found!";
 			}
-		} else if($this->user){
+		} else if($this->user)
+        {
+            if($this->user->role == '1')
+            {
+                // Admin user
+                // Redirect to Projects Lists
+                return redirect('/admin/projects');
+            }
 			$this->metas['title'] = "My Account";
 		} else {
 			return redirect('/user/login');
@@ -318,7 +355,8 @@ class UserController extends Controller {
    * @param  int  $id
    * @return Response
    */
-	public function edit(){
+	public function edit()
+    {
 		$this->appendScriptStyle();
 		$this->layout = 'user.edit';
 		$this->metas['title'] = "Edit Account";
@@ -335,7 +373,8 @@ class UserController extends Controller {
    * @param  int  $id
    * @return Response
    */
-	public function update(Request $request){
+	public function update(Request $request)
+    {
 		$rules = [
 			'lastname' => 'required',
 			'firstname' => 'required',

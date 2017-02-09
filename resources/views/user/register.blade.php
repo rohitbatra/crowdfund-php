@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('header')
 	@parent
-	<h3>Register by filling the following fields.</h3>
+	<h3>Register Here by filling the below fields.</h3>
     <hr class="tiny"/>
 @endsection
 
@@ -9,3 +9,4 @@
 	@include('errors.errors')
 	@include('modules.user.register')
 @endsection
+

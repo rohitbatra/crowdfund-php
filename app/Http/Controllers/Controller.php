@@ -124,11 +124,7 @@ abstract class Controller extends BaseController
 						'data-target'=>'#loginModal',
 					],
 				],
-				['title'=>'Register','url'=>'#','attributes'=>[
-						'data-toggle'=>'modal',
-						'data-target'=>'#registerModal',
-					],
-				],
+				['title'=>'Register','url'=>url('user/register')],
 			],
 			'about'=>[
 				['title'=>'Partners','url'=>url('about-partners')],

@@ -323,10 +323,14 @@ jQuery(document).ready(function($j){
 						f.addClass('loading');
 						ajaxCallback(formData, '/user/store', function (d) {
 							f.removeClass('loading');
-							if(d.status == false){
-								grecaptcha.reset();
-								showError(d.errors,f);
-							} else {
+							if(d.status == false)
+                            {
+                                //callRecaptcha();
+                                // Default Widget Id set to 1 as there is no way to get widget Id
+                                grecaptcha.reset('1');
+                                showError(d.errors,f);
+							} else
+                            {
 								location.reload();
 								//window.location.replace(d.url);
 							}
@@ -634,11 +638,14 @@ jQuery(document).ready(function($j){
 		}
 	}
 });
-function callRecaptcha(){
-	$.each($('.g-recaptcha'),function(i,v){
-		grecaptcha.render(v, {
+function callRecaptcha()
+{
+	$.each($('.g-recaptcha'),function(i,v)
+    {
+		w_id = grecaptcha.render(v, {
 		  'sitekey' : recaptchakey, //Replace this with your Site key
 		  'theme' : 'light'
 		})
 	});
+    return w_id;
 }
