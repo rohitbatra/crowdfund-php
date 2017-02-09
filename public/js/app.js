@@ -435,27 +435,44 @@ jQuery(document).ready(function($j){
 	buttonActions();
 
 	//show error function, errors should be 'element':['errorText']
-	function showError(errors,f){
-		if($('.general has-error has-feedback').length > 0){
+	function showError(errors,f)
+    {
+		if($('.general has-error has-feedback').length > 0)
+        {
 			$('.general has-error has-feedback').remove();
 		}
+
 		//clean errors first
-		$.each($('.form-group'),function(i,v){
-			if($(v).hasClass('has-error')){
+		$.each($('.form-group'),function(i,v)
+        {
+			if($(v).hasClass('has-error'))
+            {
 				$(v).removeClass('has-error has-feedback');
 				$(v).find('.help-block.with-errors').remove();
 			}
 		});
+
+        // Remove Old Errors -- For Login Modal
+        $('.general-error').next().next().remove();
+        $('.general-error').next().remove();
+        $('.general-error').remove();
+
 		//show errors
-		if(typeof errors !== 'undefined'){
-			$.each(errors,function(i,v){
+		if(typeof errors !== 'undefined')
+        {
+			$.each(errors,function(i,v)
+            {
 				//console.log(errors);
+				//console.log(i);
 				formgroup = f.find('#'+i).closest('.form-group');
 				errorblock = $('<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>');
-				$.each(v,function(vi,vv){
+				$.each(v,function(vi,vv)
+                {
 					errorblock.append('<li>'+vv+'</li>');
 				});
-				if(i == 'general'){
+
+				if(i == 'general')
+                {
 					f.append('<p class="general-error bg-danger">'+errorblock.html()+'</p>');
 				}
 				formgroup.append(errorblock);
