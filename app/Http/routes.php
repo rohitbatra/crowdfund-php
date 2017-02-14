@@ -115,6 +115,11 @@ Route::group(['middleware' => ['web','striptags']], function () {
         // Projects
 		Route::get('projects', 'ProjectController@adminProjects');
 
+        // Settings
+		Route::get('settings', 'SettingsController@index');
+		Route::get('settings/edit/', 'SettingsController@editSetting');
+		Route::post('settings/store/', 'SettingsController@store');
+
         // Categories
 		Route::get('categories/create', 'CategoryController@create');
 		Route::get('categories/edit/{id?}', 'CategoryController@create');

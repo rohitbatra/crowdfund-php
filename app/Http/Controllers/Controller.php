@@ -169,7 +169,7 @@ abstract class Controller extends BaseController
 				['title'=>'Content','url'=>url('admin/content')],
 				['title'=>'Projects','url'=>url('admin/projects')],
 				['title'=>'Users','url'=>url('admin/users')],
-				//['title'=>'Settings','url'=>url('admin/settings')],
+				['title'=>'Settings','url'=>url('admin/settings')],
                 ['title'=>'Logout','url'=>url('user/logout')]
 			];
 			

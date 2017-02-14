@@ -10,20 +10,23 @@ class Setting extends Model {
 	public $timestamps = true;
 	public static function getSetting($setting){
 		$settingobj = Setting::where('name','=',$setting)->first();
-		if ($settingobj){
+		if ($settingobj)
+        {
 			return $settingobj->value;
 		} else {
 			return false;
 		}
 	}
-	public static function setSetting($setting,$newval){
+	public static function setSetting($setting,$newval)
+    {
 		$settingobj = Setting::where('name','=',$setting)->first();
 		if ($settingobj){
 			$settingobj->value = $newval;
 			$settingobj->save();
 		}
 	}
-	public static function addSetting($setting,$value){
+	public static function addSetting($setting,$value)
+    {
 		$settingobj = Setting::where('name','=',$setting)->first();
 		if ($settingobj){
 			return;
@@ -36,10 +39,12 @@ class Setting extends Model {
 		}
 	}
 	
-	public static function allSetting(){
+	public static function allSetting()
+    {
 		$settingobj = Setting::all();
 		$return = array();
-		foreach ($settingobj as $o){
+		foreach ($settingobj as $o)
+        {
 			$return[$o->name]=$o->value;
 		}
 		return $return;
