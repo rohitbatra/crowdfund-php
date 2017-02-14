@@ -6,7 +6,7 @@
 	</div>
 		<div class="gray-box padding-lg">
 			<div class="container text-center">
-				<h1>Project Categories.</h1>
+				<h1>Project Categories</h1>
 				@if(isset($navigations['categories']))
 					@foreach($navigations['categories'] as $n)
 						<a class="btn btn-default btn-lg" href="{{{$n['url']}}}" title="{{{$n['title']}}}">{{{$n['title']}}}</a>
