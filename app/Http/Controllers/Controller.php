@@ -21,7 +21,8 @@ abstract class Controller extends BaseController
 	public $view;
 	public $user;
 
-	public function __construct(){
+	public function __construct()
+    {
 		$this->styles = ['app.css','all.css'];
 		$this->layout = 'layouts.default';
 		$this->user = Auth::user();
@@ -168,12 +169,13 @@ abstract class Controller extends BaseController
 				['title'=>'Content','url'=>url('admin/content')],
 				['title'=>'Projects','url'=>url('admin/projects')],
 				['title'=>'Users','url'=>url('admin/users')],
+				//['title'=>'Settings','url'=>url('admin/settings')],
                 ['title'=>'Logout','url'=>url('user/logout')]
 			];
 			
 			if ($this->user->role == 1)
             {
-				$navigations['user'][] = ['title'=>'Admin','url'=>url('admin'),'child'=>$navigations['admin']];
+				$navigations['user'][] = ['title'=>'Admin','url'=>url('#'),'child'=>$navigations['admin']];
 			}
 		}
 		
