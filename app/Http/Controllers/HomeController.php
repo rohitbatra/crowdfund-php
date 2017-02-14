@@ -11,11 +11,12 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 		//Slideshow
 		$slideshow = [
 			['title'=>'What is PoloniaGo?',
-             'desc'=>'Poland\'s most trusted crowdfunding platform that helps you raise funds for personal needs, charitable causes and creative ideas.',
+             'desc'=>'A crowdfunding website that has been developed to help raise funds for Polish people, those of Polish heritage, Polish groups, Polish organizations, Polish businesses, Polish communities, and those in our Polish community who need our support.',
              'slide'=>asset('images/homeslides/slide_1.jpg'),
              'cta'=>'Add a Project','url'=>url('project/add')],
 		];
